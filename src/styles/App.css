@@ -1,12 +1,12 @@
-h1 {
-    color: #27aedb;
+.main {
+    font-family: sans-serif;
     text-align: center;
-    }
-    
-
-button{
-    color: #27aedb;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-}
+  }
+  .btns {
+    margin: 3px 9px;
+    padding: 2px 9px;
+  }
+  .inputs {
+    margin: 4px;
+    padding: 5px;
+  }
