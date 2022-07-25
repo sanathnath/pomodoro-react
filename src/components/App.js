@@ -71,23 +71,29 @@ function App() {
     setBreakSecond(breakDuration * 60);
   }
   return (
-    <div className="App" style={{textAlign: "center"}}>
-      <div className='clock'>
-      <h1 className='timer'>{(type === 'work') ? convertToStandardFormat(worksecond): convertToStandardFormat(breaksecond) }</h1>
+    <div className="App" >
+      <div className="card">
+        <div style={{display:"flex", justifyContent:"center", alignItems:"center" }}>
+        <div className='clock'>
+        <h1 className='timer'>{(type === 'work') ? convertToStandardFormat(worksecond): convertToStandardFormat(breaksecond) }</h1>
+        </div>
+        </div>
       <h3>{(type === 'work') ? 'Work' : 'Break'}-Time</h3>
-      </div>
       <div className='control'>
-      <button data-testid='start-btn' key='start' onClick={() => {setFlag(true); setResetFalg(false)}} disabled={flag} >start</button>
-      <button data-testid='stop-btn' key='stop' onClick={() => {setFlag(false); setResetFalg(false)}} disabled={!flag}>Stop</button>
-      <button data-testid='reset-btn' key='reset' onClick={() => {reset()}} disabled={resetFlag}>Reset</button>
+      <button className={`btns ${!flag?"start-btn":"start-btn-d"}`} data-testid='start-btn' key='start' onClick={() => {setFlag(true); setResetFalg(false)}} disabled={flag} >start</button>
+      <button className={`btns ${flag?"stop-btn":"stop-btn-d"}`}  data-testid='stop-btn' key='stop' onClick={() => {setFlag(false); setResetFalg(false)}} disabled={!flag}>Stop</button>
+      <button className={`btns ${!resetFlag?"reset-btn":"reset-btn-d"}`}  data-testid='reset-btn' key='reset' onClick={() => {reset()}} disabled={resetFlag}>Reset</button>
       </div>
       <br></br>
       <div className='parameters'>
         <form onSubmit={setDuration}>
-        <input data-testid='work-duration' placeholder='work duration' required type='Number' value={workDuration} disabled={flag} onChange={(e) => setWorkDuration(validateData(e.target.value))}></input>
-        <input data-testid='break-duration' placeholder='break duration' required type='Number' value={breakDuration} disabled={flag} onChange={(e) => setBreakDuration(validateData(e.target.value))}></input>
-        <button data-testid='set-btn' type='submit' disabled={flag}>set</button>
+          <div className="input-div">
+          <input className="inputs" data-testid='work-duration' placeholder='work duration' required type='Number' value={workDuration} disabled={flag} onChange={(e) => setWorkDuration(validateData(e.target.value))}></input>
+          <input className="inputs" data-testid='break-duration' placeholder='break duration' required type='Number' value={breakDuration} disabled={flag} onChange={(e) => setBreakDuration(validateData(e.target.value))}></input>
+          <button className="btns set-btn"  data-testid='set-btn' type='submit' disabled={flag}>set</button>
+          </div>
         </form>
+      </div>
       </div>
       </div>
   );
